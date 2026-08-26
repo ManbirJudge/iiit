@@ -1,0 +1,4 @@
+- theory?
+- hypothesis?
+- proof read
+- fancy header?
