@@ -10,6 +10,7 @@
 \usepackage{booktabs}
 \usepackage{subcaption}
 \usepackage{float}
+\usepackage{fancyhdr}
 
 \definecolor{vscodeBg}{rgb}{0.12, 0.12, 0.12}     
 \definecolor{vscodeFg}{rgb}{0.86, 0.86, 0.86}     
@@ -36,6 +37,12 @@
 }
 \lstset{style=customstyle}
 
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{Lab 1 -- Report}
+\fancyfoot[C]{\thepage}
+
 \begin{document}
 
 \begin{center}
@@ -50,7 +57,7 @@
 
 \noindent \textbf{Student Name 1:} Manbir Singh Judge \hfill \textbf{Roll Number:} 2026113005 \\
 \noindent \textbf{Student Name 2:} Charishma Kandregula \hfill \textbf{Roll Number:} 2026112022 \\
-\noindent \textbf{Table Number:} 16 \hfill \textbf{Lab Room Number:} 115 \\
+\noindent \textbf{Table Number:} 16 \hfill \textbf{Lab Room Number:} 114 \\
 \noindent \textbf{Date of Experiment:} 21/08/2026
 
 \vspace{0.4cm}
@@ -70,10 +77,11 @@
 % experiment 1
 % ==============================================================================
 
+\fancyhead[R]{Experiment 1}
 \section{Experiment 1}
 
 \subsection{Aim}
-Familiarization with Digital Test Kit and use it to check working of NOT gate.
+Familiarization with Digital Test Kit and use it to check the working of NOT gate.
 
 \subsection{Components \& Equipment Required}
 \begin{itemize}
@@ -92,10 +100,10 @@ Familiarization with Digital Test Kit and use it to check working of NOT gate.
     \item \textbf{IC 7404 Hex Inverter Wiring \& Logic Verification:}
     \begin{enumerate}
         \item Mount the IC 7404 across the center notch of the breadboard.
-        \item Connect Pin 14 ($V_{CC}$) to the $+5\text{V}$ power rail and Pin 7 ($\text{GND}$) to the ground rail.
+        \item Connect Pin 14 ($V_{CC}$) to the power rail and Pin 7 ($\text{GND}$) to the ground rail.
         \item Wire an input pin to one of the digital input switches (S1) on the test kit.
         \item Wire the corresponding inverter output pin to an LED display terminal on the test kit.
-        \item Toggle input switch S1 between HIGH and LOW logic levels, observing and recording the active LED indicators and output logic states.
+        \item Toggle input switch S1 between HIGH and LOW logic levels and observing the LED indicator.
     \end{enumerate}
 \end{enumerate}
 
@@ -154,8 +162,7 @@ Familiarization with Digital Test Kit and use it to check working of NOT gate.
 \subsection{Conclusion}
 \begin{itemize}
     \item \textbf{Digital Test Kit Functional Verification}
-    \item \textbf{IC 7404 Operation:} The IC 7404 TTL Hex Inverter behaved according to boolean logic rules ($Y = \bar{A}$) as expected.
-    \item \textbf{Experimental Validation:} The experimental observations matched the theoretical truth table of NOT gate.
+    \item \textbf{Experimental Validation of NOT gate:} The experimental observations matched the theoretical truth table of NOT gate.
 \end{itemize}
 
 \newpage
@@ -164,12 +171,13 @@ Familiarization with Digital Test Kit and use it to check working of NOT gate.
 % experiment 2
 % ==============================================================================
 
+\fancyhead[R]{Experiment 2}
 \section{Experiment 2}
 
 \subsection{Aim}
 \begin{itemize}
     \item Learn how to write and compile code for ATmega328P microcontroller in Arduino.
-    \item Write a program output "ON" and "OFF" to serial monitor based on output of NOT gate.
+    \item Write a program to output "ON" and "OFF" to serial monitor based on output of NOT gate.
 \end{itemize}
 
 \subsection{Components \& Equipment Required}
@@ -186,21 +194,21 @@ Familiarization with Digital Test Kit and use it to check working of NOT gate.
     \item \textbf{Hardware Setup:}
     \begin{enumerate}
         \item Retain the IC 7404 setup on the breadboard from Experiment 1.
-        \item Connect a common ground wire between the ground rail ($\text{GND}$) of the Digital Test Kit and a $\text{GND}$ pin on the Arduino Uno to ensure a unified logic reference level.
-        \item Tap the output signal of the inverter using a jumper wire and connect it directly to a digital input pin on the Arduino Uno board.
+        \item Connect the power rail and ground rail of the Digital Test Kit to $\text{Vin}$ and $\text{GND}$ pins on the Arduino Uno to ensure a unified logic reference level.
+        \item Connect output signal of the inverter to a digital input pin on the Arduino Uno board using a jumper wire.
     \end{enumerate}
 
     \item \textbf{Software:}
     \begin{enumerate}
         \item Download and install the Arduino IDE.
         \item Connect the Arduino Uno to the computer via a USB A-to-B cable.
-        \item Write the code to continuously read the digital voltage level using \texttt{digitalRead()} and output the corresponding logic state to the Serial Monitor.
+        \item Write the code to read the output of NOT gate and output the corresponding logic state to the Serial Monitor.
         \item Select the correct board (\textit{Arduino Uno}) and Serial Port under the \textbf{Tools} menu. Then compile and upload the sketch to the microcontroller.
     \end{enumerate}
 
     \item \textbf{Observation:}
     \begin{enumerate}
-        \item Open the \textit{Serial Monitor} inside the Arduino IDE.
+        \item Open the Serial Monitor inside the Arduino IDE.
         \item Toggle the physical switch between LOW and HIGH logic levels.
         \item Simultaneously observe and cross-verify:
         \begin{itemize}
@@ -285,6 +293,6 @@ void loop() {
 \end{figure}
 
 \subsection{Conclusion}
-We successfully configured the software environment to write, compile, and upload C++ code to the Arduino Uno. The real-time readings captured on the Serial Monitor matched with the physical LED indicators and input switch states.
+We successfully configured the software environment to write, compile, and upload code to the Arduino Uno. The real-time readings captured on the Serial Monitor matched with the physical LED indicators and input switch states.
 
 \end{document}
