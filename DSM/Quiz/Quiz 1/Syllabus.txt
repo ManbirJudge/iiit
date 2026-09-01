@@ -1,0 +1,1 @@
+Number system and conversions, Complement, Boolean Algebra, Canonical and standard form, Minimization using boolean algebra and K_maps, K-maps with don't care conditions.

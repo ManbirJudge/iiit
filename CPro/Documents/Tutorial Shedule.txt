@@ -1,0 +1,17 @@
+Groups G1–G4 | Monday | 2:00 PM – 3:00 PM
+  G1 – SH1
+  G2 – SH2
+  G3 – SH3
+  G4 – H202
+
+Groups G5–G8 | Friday | 2:00 PM – 3:00 PM
+  G5 – H104
+  G6 – H204
+  G7 – H303
+  G8 – H304
+
+Groups G9–G12 | Saturday | 12:00 PM – 1:00 PM
+  G9 – H103
+  G10 – H104
+  G11 – H203
+  G12 – H204
