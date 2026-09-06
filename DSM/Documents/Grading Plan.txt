@@ -1,0 +1,5 @@
+Labs:          30% (20% for final exam, 10% for report submission)
+Quiz(2):       5%+5%
+Tutorial Quiz: 10% (Best 7 or 8 out of 10)
+MID exam:      20%
+END exam:      30%
