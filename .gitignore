@@ -1,3 +1,6 @@
+Books/
+
 tmp.*
+
 *.out
 build/

@@ -1,0 +1,7 @@
+1. [1,2] is NOT well ordered as we can consider the subset (1,2] which has no minimum element.
+2. < can either be defined as a<b implies a+k=b using Peanos axioms or as a more fundamental property that follow the 3 rules mentioned(antireflexivity, transitivity, trichotomy)
+2. Peano' axioms implies Well Ordering, that meaning N shows Well Ordering.
+3. Modified Peano's axioms(w/Well Ordering instead of Induction) doesn't show Induction.
+4. Modified Peano's axioms can be shown to not give N as a set, there exists a counterexample involving limit ordinals which is non isomorphic to it
+5. We need to modify the Axiom set more( adding > as a fundamental property, and assuming predecessor exist and succesors exist) in order to show Induction. 
+6. W/ current Peanos axioms, Induction is stronger then Well Ordering. However an alternate axiom set can be used to get Induction and Peanos axioms, giving an alt formulation of Natural Numbers
