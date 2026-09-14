@@ -1,0 +1,22 @@
+Textbook(s):
+1. Discrete Mathematics and its Applications (8e) by Kenneth H Rosen
+2. Contemporary Abstract Algebra (9e) by Joseph Gallian.
+
+Please prepare notes during lectures - All slides may not be accessible.
+
+A Rough Grading Structure
+
+• Assignments: 20% (questions can appear in exams)
+• Quizzes: 15% (Surprise quizzes are a possibility if need arises)
+• Mid Exam: 25%
+• Final Exam: 35%
+• Attendance, Participation, Surprise: 5%
+
+Cheating, Attendance and Ethics related issues can incur 100% penalty.
+
+Overview of topics we may cover
+1. Introduction to Logic & Proofs
+2. Introduction to Set Theory
+3. Introduction to Abstract Algebra
+4. Introduction to Generating Functions
+5. Introduction to Graph Theory
