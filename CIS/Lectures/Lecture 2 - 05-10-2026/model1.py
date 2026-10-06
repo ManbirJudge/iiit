@@ -5,7 +5,7 @@ import numpy as np
 L = 1000
 dx = 1
 dt = 1
-N = 1000
+N = 5000
 Pp = 0.5
 Pn = 1 - Pp 
 
