@@ -3,4 +3,5 @@ Books/
 tmp.*
 
 *.out
+*.exe
 build/
