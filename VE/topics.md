@@ -1,6 +1,8 @@
 Class 1 - Intro
-Class 2 - aspirations and production line
-Class 3 - confidence
-Class 4 - peer pressure
-Class 5 - desires (i was absent)
-Class 6 - continuation of desires, propagation of emotions
+Class 2 - Aspirations and Production Line
+Class 3 - Confidence
+Class 4 - Peer Pressure
+Class 5 - Desires (absent)
+Class 6 - Propagation of Emotions
+Class 7 - Competition vs Cooperation
+Class 8 - Pressure
