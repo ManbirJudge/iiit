@@ -1,0 +1,3 @@
+NAMD    <T>= 297.7 K  std(Etot)=0.577 kcal/mol  drift=+6.05 kcal/mol/ns  (+0.0010 per atom per ns)
+OpenMM  <T>= 298.1 K  std(Etot)=0.610 kcal/mol  drift=-6.55 kcal/mol/ns  (-0.0011 per atom per ns)
+saved nve_energies.png

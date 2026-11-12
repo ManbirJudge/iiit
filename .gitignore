@@ -5,3 +5,5 @@ tmp.*
 *.out
 *.exe
 build/
+out/
+dist/

@@ -1,0 +1,54 @@
+# NAMD NVE tutorial: Trp-cage (1L2Y) in TIP3P water, Amber ff14SB
+# Run from this folder:  namd2 +p4 nve.namd > out/nve.log
+
+# ---- inputs and force field ----
+# Force field: Amber ff14SB + TIP3P, same prmtop as OpenMM
+amber            yes
+parmfile         ../inputs/trpcage_wat.prmtop
+ambercoor        ../inputs/trpcage_equil.rst7
+readexclusions   yes
+exclude          scaled1-4
+1-4scaling       0.833333
+scnb             2.0
+
+# Nonbonded: 9 A cutoff, PME for electrostatics
+switching        off
+cutoff           9.0
+pairlistdist     11.0
+LJcorrection     on
+PME              yes
+PMEGridSpacing   1.0
+PMETolerance     1e-6
+
+# Integrator: 2 fs, bonds to H (and water) rigid
+timestep         2.0
+rigidBonds       all
+nonbondedFreq    1
+fullElectFrequency 1
+stepspercycle    10
+wrapAll          on
+
+# Periodic box (from tleap) and its centre
+cellBasisVector1 42.937  0.0    0.0
+cellBasisVector2  0.0  40.967   0.0
+cellBasisVector3  0.0   0.0   35.228
+cellOrigin       24.09 23.21  19.85
+
+# ---- everything below is NVE: no langevin, no langevinPiston, no rescaling ----
+# random Maxwell-Boltzmann velocities at 300 K
+temperature      300
+seed             12345
+COMmotion        no
+outputName       out/nve
+dcdfreq          500
+
+# (a) no minimisation: the starting structure is already equilibrated.
+# (minimize would also set the velocities to zero, so the run would start near 0 K)
+
+# (b) NVE equilibration, 10 ps (5000 x 2 fs). Discarded in analysis.
+# print an ENERGY: line every 100 steps = 0.2 ps
+outputEnergies   100
+run              5000
+
+# (c) NVE production, 50 ps (25000 x 2 fs). This is what we analyse.
+run              25000
