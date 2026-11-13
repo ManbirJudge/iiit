@@ -20,32 +20,48 @@ $$\Omega(E) = \text{number of accessible microstates for energy E}$$
 
 Experimentally,
 $$S \propto \ln(\Omega(E))$$
-$$S = k_b \ln(\Omega(E))$$
+$$\boxed{S = k_b \ln(\Omega(E))}$$
 
-Boltzmann constant, $k_b = 1.38 \times 10^{-23} \space m^2 kg s^{-2} K^{-1}$
+Boltzmann constant, $k_b = 1.38 \times 10^{-23} \space J/K$
 
 We also know,
 $$\Omega(E) \propto \text{circumference of ellipse} \propto \pi(a + b)$$
-$$\Omega(E) \propto E^{\frac{1}{2}}$$
+$$\Omega(E) \propto \sqrt E$$
 
 ## Model 5
-[DGM]\
-Number of particles, $N = 108$\
-Side of cube $ = L$\
-$0 \le x_i, y_i, z_i \le L$\
-Distance between any two particles, $r_{ij} \ge 3$
-
-Set of all positions, $\{\vec r\} = \{\vec{r_1}, \vec{r_2}, ..., \vec{r_N}\}$
-
-Now, potential energy $U$ is as follows:
+### Description
+We take 108 Argon atoms in a square box under Lennard-Jones potential.\
+Potential energy $U$ is as follows:
 $$U(\{\vec r\}) = \sum_{i=1}^{N-1} \sum_{j=i+1}^{N} U_{ij}$$
-$$U_{ij} = 4 \varepsilon \left[ \left( \frac{\sigma}{r_{ij}} \right)^{12} + \left( \frac{\sigma}{r_{ij}} \right)^6 \right]$$
-Here, $\varepsilon$ and $\sigma$ are constant parameters.
-
+$$\boxed{U_{ij} = 4 \varepsilon \left[ \left( \frac{\sigma}{r_{ij}} \right)^{12} - \left( \frac{\sigma}{r_{ij}} \right)^6 \right]}$$
+Here, $\varepsilon$ and $\sigma$ are constant parameters.\
 And kinetic energy $K$ is as follows:
 $$K(\{\vec p\}) = \sum_{i=1}^{N} \frac{p_i^2}{2m}$$
 
-So Hamilton's equations for this system are
+### Calculations
+$$\boxed{\vec F_{ij} = \frac{24\varepsilon}{r_{ij}^2} \left( 2\left( \frac{\sigma}{r_{ij}} \right)^{12} - \left( \frac{\sigma}{r_{ij}} \right)^6 \right) \vec{r_{ij}}}$$
+$$\vec{r_{ij}} = \vec{r_i} - \vec{r_j}$$
+
+### Simulation
+We will initialize positions maintaining a minimum distance (so that initial magnitude of LJ force doesn't explode).\
+Then we initialize velocities given some initial target temperature.\
+We use the above formulas to calculate forces, potential energy and kinetic energy at each step.\
+And we use Verlet integration for calculating new positions and velocities.
+#### Implementation Details
+- We are working with velocities instead of momentums.
+- We use a conversion factor to ease calculations.
+- We set the net momentum to 0 so that system itself doesn't have a translational motion (it's not a big deal but not recommended).
+- We output every `N_out = 10` steps.
+
+### Computed Outputs
+![](plt1.png)
+![](plt2.png)
+![](plt3.png)
+
+### Observations
+Energy remains constant. This matches our expectation as system is isolated.
+
+<!-- So Hamilton's equations for this system are
 $$\frac{d \vec p_i}{dt} = -\frac{dH}{d \vec r_i}$$
 $$\frac{d \vec r_i}{dt} = \frac{dH}{d \vec p_i}$$
 
@@ -55,4 +71,4 @@ Solving $\frac{d \vec p_i}{dt}$,
 $$TBDL$$
 
 Solving $\frac{d \vec r_i}{dt}$,
-$$TBDL$$
+$$TBDL$$ -->

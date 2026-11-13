@@ -1,9 +1,0 @@
-source leaprc.protein.ff14SB
-source leaprc.water.tip3p
-mol = loadpdb trpcage_clean.pdb
-addions mol Cl- 0
-solvatebox mol TIP3PBOX 10.0
-check mol
-saveamberparm mol trpcage_wat.prmtop trpcage_wat.inpcrd
-savepdb mol trpcage_wat.pdb
-quit

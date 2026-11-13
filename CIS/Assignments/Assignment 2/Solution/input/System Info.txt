@@ -1,0 +1,8 @@
+PDB ID          : 2HEP
+atoms           : 12167
+protein residues: 42
+waters          : 3824
+ions (Na+/Cl-)  : 3
+net charge      : -0.000 e
+box (A)         : 50.050 x 45.863 x 57.346
+force field     : Amber ff14SB + TIP3P

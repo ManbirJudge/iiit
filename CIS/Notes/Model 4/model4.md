@@ -5,7 +5,7 @@ $U(x)$ is the potential energy function (due to interaction of particles) and $K
 
 
 We define the **Hamiltonian** as
-$$H(x, p) := U(x) + K(p)$$
+$$\boxed{H(x, p) := U(x) + K(p)}$$
 It represents the total energy of the system.\
 Obviously,
 $$\frac{\partial H}{\partial x} = \frac{\partial U}{\partial x}$$
@@ -16,18 +16,17 @@ $$\frac{dH(x, p)}{dt} = \frac{dx}{dt}\frac{\partial H}{\partial x} + \frac{dp}{d
 
 ### Hamilton's Equations
 Hamilton's equations are as follows:
-$$\frac{\partial H}{\partial x} = - \frac{dp}{dt}$$
-$$\frac{\partial H}{\partial p} = \frac{dx}{dt}$$
+$$\boxed {\frac{\partial H}{\partial x} = - \frac{dp}{dt}}$$
+$$\boxed {\frac{\partial H}{\partial p} = \frac{dx}{dt}}$$
 These hold regardless of conditions.\
-**NOTE:** These can be derived trivially for particle systems using Newtonian mechanics.
+> **Note:** These can be derived trivially for particle systems using Newtonian mechanics.
 
 ### Isolated Systems
-In isolated systems,
-$$H = \text{constant}$$
+In isolated systems, $H$ is constant,
 $$\frac{dH}{dt} = 0$$
 
 ## OUR Model
-Let, a particle moves on $x$-axis. Its motion is described by
+Let, a particle moves on $x$-axis. Let, its motion is described by
 $$U(x) = \frac{1}{2} k x^2$$
 $$H(p) = \frac{p^2}{2m}$$
 Then,
@@ -43,7 +42,19 @@ Similarly,
 $$p(t + \Delta t) \approx p(t) + \left. \frac{dp}{dt} \right|_{t} \Delta t = p(t) + F(t) \Delta t$$
 
 ## Computed Results
-[TBDL]
+```
+k = 1.0
+m = 1.0
+dt = 0.001
+
+x = 2.0
+p = 2.0
+F = -1 * k * x
+
+N = 10000
+```
+![](plt1.png)
+![](plt2.png)
 
 It is obvious that phase space would be elliptical since,
 $$\frac{x^2}{\frac{2H}{k}} + \frac{p^2}{2mH} = 1$$

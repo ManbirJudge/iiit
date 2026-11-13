@@ -28,11 +28,13 @@ plt.title('Phase Space')
 plt.plot(x_t, p_t)
 plt.xlabel('$x$')
 plt.ylabel('$p$')
+plt.savefig('plt1.png', dpi=300, bbox_inches='tight')
 
 plt.figure()
 plt.title('$x$ vs $t$')
 plt.plot(np.linspace(0, N * dt, num=N), x_t)
 plt.xlabel('$t$')
 plt.ylabel('$x$')
+plt.savefig('plt2.png', dpi=300, bbox_inches='tight')
 
 plt.show()

@@ -1,11 +1,11 @@
 # Model 3
 ## Probabilistic $\Delta x$
-In model 1
-$$P(\Delta x) = \left\{\begin{matrix} 1/2 \text{, if } \Delta x = -\Delta x_0, \Delta x_0 \\\\ 0, \text{otherwise} \end{matrix} \right\}$$
+In model 1,
+$$P(\Delta x) = \left\{\begin{matrix} 1/2 \text{, if } \Delta x = -\Delta x_0, \Delta x_0 \\ 0, \text{otherwise} \end{matrix} \right\}$$
 To get more realistic models, we should sample $\Delta x$ from a Gaussian distribution instead. It is described by
-$$P(\Delta x) = Ae^{-\frac{(\Delta x - \langle \Delta x \rangle)^2}{2 \sigma^2}} \text{ such that } \int^{\infty}_{-\infty} P(\Delta x) \,d(\Delta x) = 1$$
+$$\boxed{P(\Delta x) = Ae^{-\frac{(\Delta x - \langle \Delta x \rangle)^2}{2 \sigma^2}}} \text{ such that } \int^{\infty}_{-\infty} P(\Delta x) \,d(\Delta x) = 1$$
 After solving, we get
-$$A = \frac{1}{\sqrt{2 \pi \sigma^2}}$$
+$$\boxed{A = \frac{1}{\sqrt{2 \pi \sigma^2}}}$$
 
 ### Solving $A$
 [TBDL]
@@ -21,7 +21,16 @@ Length of wire $= L$
 In `../Model 1/model1.py`.
 
 ## Outputs
-[TBDL]
+- $\Delta t = 1$
+- $\sigma = 1.0$   
+- $\langle x \rangle = 0.0$   
+- $N = 4000$
+- $L = 800.0$
+
+![](plt1.png)
+![](plt2.png)
+![](plt3.png)
+![](plt4.png)
 
 ## Velocity
 Obviously
@@ -37,8 +46,8 @@ Trivially,\
 $P(x, t) =$ probability of electron being at position $x$ at time $t$
 
 Now, change in probability for that position in a time step
-$$P(x, t + \Delta t) - P(x, t)$$
-$$= P(x - \Delta x, t)T_{x - \Delta x \rightarrow x} + P(x + \Delta x, t)T_{x + \Delta x \rightarrow x} - P(x, t)(T_{x \rightarrow x - \Delta x} + T_{x \rightarrow x + \Delta x})$$
+$$= P(x, t + \Delta t) - P(x, t)$$
+$$= P(x - \Delta x, t)T_{x - \Delta x \rightarrow x} + P(x + \Delta x, t)T_{x + \Delta x \rightarrow x} - P(x, t)$$
 $$= \frac{1}{2}(P(x - \Delta x, t) + P(x + \Delta x)) - P(x, t)$$
 
 Dividing both sides by $(\Delta x)^2(\Delta t)$,
@@ -48,16 +57,15 @@ As $\Delta x \rightarrow 0$ and $\Delta t \rightarrow 0$,
 $$\frac{1}{(\Delta x)^2} \frac{dP}{dt} = \frac{1}{2 \Delta t} \frac{d^2 P}{dx^2}$$
 
 After rearranging, we get the **Diffusion equation**:
-$$\frac{dP}{dt} = D \frac{d^2 P}{dx^2} \text{ where } D = \frac{(\Delta x)^2}{2 \Delta t}$$
+$$\boxed{ \frac{dP}{dt} = D \frac{d^2 P}{dx^2} \text{ where } D = \frac{(\Delta x)^2}{2 \Delta t}}$$
 
 ### 3D Diffusion
 3D diffusion equation is
 $$\frac{\partial P(x, y, z, t)}{\partial t} = D_x \frac{\partial^2 P}{\partial x^2} + D_y \frac{\partial^2 P}{\partial y^2} + D_z \frac{\partial^2 P}{\partial z^2}$$
-Here
+Here,
 $$D_x = \frac{(\Delta x)^2}{\Delta t} \text{, } D_y = \frac{(\Delta y)^2}{\Delta t} \text{ and } D_z = \frac{(\Delta z)^2}{\Delta t}$$
 
-For an isotropic system, $D_x = D_y = D_z = D$ (because $\Delta x = \Delta y = \Delta z$).\
-Then,
+For an isotropic system, $D_x = D_y = D_z = D$ (because $\Delta x = \Delta y = \Delta z$). Then,
 $$\frac{\partial P(x, y, z, t)}{\partial t} = D \nabla^2 P(x, y, z, t)$$
 $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$ is called **Laplacian operator**.
 

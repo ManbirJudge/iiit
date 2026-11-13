@@ -3,7 +3,10 @@ Run from this folder:  python nve.py [nsteps]     (writes nve.csv and nve.dcd)
   In class:  python nve.py 1000     1000 steps x 2 fs = 2 ps, a few minutes on a laptop CPU
   Default:   30000 steps = 60 ps    about 30 min on CPU (results are in ../reference_results/)
 """
-import sys
+import sys, os
+
+os.environ['OPENMM_CPU_THREADS'] = '12'
+
 import openmm as mm
 from openmm import app, unit
 
@@ -25,6 +28,8 @@ integrator = mm.VerletIntegrator(0.002 * unit.picoseconds)
 
 # 4. Simulation object (CPU platform works everywhere)
 platform = mm.Platform.getPlatformByName('CPU')
+platform.setPropertyDefaultValue('Threads', '12') 
+
 sim = app.Simulation(prmtop.topology, system, integrator, platform)
 sim.context.setPositions(inpcrd.positions)
 sim.context.setPeriodicBoxVectors(*inpcrd.boxVectors)
