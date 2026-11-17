@@ -1,0 +1,177 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+\fancypagestyle{no_hdr_border_rule}{
+  \renewcommand{\headrulewidth}{0pt}
+}
+\thispagestyle{no_hdr_border_rule}
+
+\begin{center}
+    {\Large \textbf{Assignment 2 -- Report}} \\[0.2cm]
+    {\large \textbf{Computing in Sciences -- I}} \\[0.1cm]
+    {\normalsize International Institute of Information Technology, Hyderabad} \\[0.3cm]
+\end{center}
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.4cm}
+
+\noindent \textbf{Student Name:} Manbir Singh Judge \\
+\noindent \textbf{Roll Number:} 2026112005 \\
+\noindent \textbf{Protein:} 2HEP \\
+
+\hrule
+\vspace{0.5cm}
+
+\vspace{1em}
+
+\tableofcontents
+\vspace{0.5cm}
+\hrule
+\vspace{0.8cm}
+
+\newpage
+\fancyhead[L]{CIS-I}
+\fancyhead[R]{Assignment 2 -- Report}
+
+\section{Part A -- Custom MD Engine}
+
+\subsection{Part A1}
+Starter file was completed including -- energy and forces for all five terms, periodic box and 9 \AA \space cutoff. \\
+The code is present under the folder \verb|our_engine|.
+
+\subsection{Part A2 -- Velocity Verlet and Plots}
+The velocity Verlet loop was added in \verb|our_engine/engine.py|. \\
+The simulation was run for 2 ps at 1 fs. \\
+Following are the plots: 
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{our_engine/out/K_0.5.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{our_engine/out/K_1.0.png}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{our_engine/out/P_0.5.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{our_engine/out/P_1.0.png}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{our_engine/out/E_0.5.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{our_engine/out/E_1.0.png}
+    \end{subfigure}
+\end{figure}
+
+Change in total energy:
+\begin{itemize}[leftmargin=1.5cm]
+    \item \textbf{For dt = 0.5 fs:} 2.716 kcal/mol
+    \item \textbf{For dt = 1 fs:} 81.718 kcal/mol
+    \item \textbf{For dt = 2 fs:} -
+\end{itemize}
+
+\textbf{Note:} The simulation didn't complete for \verb|dt = 2 fs|. The reason is discussed later.
+
+\subsection{Part A3}
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|c|}
+%         \hline
+%         $S$ & $R/W$ & Operation & Output \\
+%         \hline
+%         0 & X & None & 0 \\
+%         \hline
+%         1 & 0 & Read & Q \\
+%         \hline
+%         1 & 1 & Write & 0 \\
+%         \hline
+%     \end{tabular}
+% \end{table}
+
+\subsection{Part A4 -- Comparing Energy Fluctuation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{our_engine/out/E_fluctuation_0.5.png}
+\end{figure}
+\hfill
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{our_engine/out/E_fluctuation_1.0.png}
+\end{figure}
+
+We see that energy fluctuation is a lot less when \verb|dt = 0.5 fs| as compared to \verb|dt = 1 fs|. The reason behind this is -- we are using Taylor series expansion and removing higher degree terms in our Verlet integrator. This is required to make the equations computationally solvable. But, it introduces errors which accumulate overtime. Magnitude of errors depends on \verb|dt|. Hence, that error is less in case of \verb|dt = 0.5 fs|.
+
+\section{Part B -- NAMD and OpenMM Simulations}
+The provided analysis scripts for Part B were used without any changes.
+
+\subsection{NAMD Run}
+Run \verb|namd/run.sh| to run NAMD simulation for all three timesteps.
+
+\subsubsection{dt = 0.5 fs}
+Average temperature = 4 K \\
+Average potential energy = 6.437 kcal/mol \\
+Energy fluctuation = 3.23 kcal/mol
+
+\subsubsection{dt = 1 fs}
+Average temperature = 315.47 K \\
+Average potential energy = -29702.46 kcal/mol \\
+Energy drift = -104.67 kcal/mol
+
+\subsubsection{dt = 2 fs}
+Simulation didn't complete.
+
+\subsection{OpenMM Run}
+The provided OpenMM simulation script(s) was used as it is.
+
+\subsubsection{dt = 0.5 fs}
+Average temperature = 4 K \\
+Average potential energy = 6.437 kcal/mol \\
+Energy fluctuation = 3.23 kcal/mol
+
+\subsubsection{dt = 1 fs}
+Average temperature = 301.27 K \\
+Average potential energy = -24635.56 kcal/mol \\
+Energy drift = 271.97 kcal/mol
+
+\subsubsection{dt = 2 fs}
+Simulation didn't complete.
+
+\end{document}

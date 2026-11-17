@@ -66,7 +66,7 @@ v = rng.normal(0.0, sigma_v_0, (N, 3))
 v -= v.mean(axis=0)  # removing mean velocity, so that total momentum is zero
 
 DOF = 3 * (N - 1)  # degrees of freedom (subtracted 1 because of constraint on movement of centre of mass)
-T = 2 * K(v) / (DOF * R)  # temperature we actually got (K = DOF * k_b * T / 2)
+T = 2 * K(v) / (DOF * R)  # temperature we actually got (K = DOF * k_b * T / 2) (1. after removing mean and 2. <not exact result of our RNG>)
 
 v *= np.sqrt(T_0 / T)  # scale velocities according to T (v ∝ sqrt(T))
 
