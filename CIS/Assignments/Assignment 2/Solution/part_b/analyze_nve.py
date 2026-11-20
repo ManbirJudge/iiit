@@ -8,7 +8,7 @@ pid, namd_log, omm_csv = sys.argv[1].upper(), sys.argv[2], sys.argv[3]
 dt = float(sys.argv[4]) if len(sys.argv) > 4 else 1.0
 equil = float(sys.argv[5]) if len(sys.argv) > 5 else 2.0
 KJ = 1 / 4.184
-natoms = int(re.search(r'atoms\s*:\s*(\d+)', open(f'../proteins/{pid}/system_info.txt').read()).group(1))
+natoms = int(re.search(r'atoms\s*:\s*(\d+)', open(f'../{pid}/system_info.txt').read()).group(1))
 
 cols, rows = None, []
 for l in open(namd_log):
@@ -33,5 +33,5 @@ for j, (name, t, s) in enumerate([('NAMD', tn, namd), ('OpenMM', to, omm)]):
                        E_std=float(s['E'][m].std()), PE_mean=float(s['PE'][m].mean()), KE_mean=float(s['KE'][m].mean()),
                        PE_std=float(s['PE'][m].std()), drift_kcal_per_ns=float(slope), drift_per_atom_per_ns=float(slope / natoms))
     print(f"{name:7s} <T>={stats[name]['T_mean']:6.1f} K  <PE>={stats[name]['PE_mean']:.1f}  std(E)={stats[name]['E_std']:.3f}  drift={slope:+.2f} kcal/mol/ns ({slope/natoms:+.5f}/atom/ns)")
-plt.tight_layout(); plt.savefig(f'nve_{pid}_dt{dt:g}.png', dpi=130)
-json.dump(stats, open(f'stats_{pid}_dt{dt:g}.json', 'w'), indent=1); print('wrote', f'stats_{pid}_dt{dt:g}.json')
+plt.tight_layout(); plt.savefig(f'out/nve_{pid}_dt{dt:g}.png', dpi=130)
+json.dump(stats, open(f'out/stats_{pid}_dt{dt:g}.json', 'w'), indent=1); print('wrote', f'out/stats_{pid}_dt{dt:g}.json')

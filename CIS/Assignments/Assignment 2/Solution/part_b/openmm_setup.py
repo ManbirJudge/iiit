@@ -3,7 +3,7 @@ periodic box, 9 A cutoff (no PME; reaction-field Coulomb, OpenMM default dielect
 import openmm as mm
 from openmm import app, unit
 
-def make_system(pid, base='../proteins'):
+def make_system(pid, base='..'):
     prmtop = app.AmberPrmtopFile(f'{base}/{pid}/{pid}.prmtop')
     inpcrd = app.AmberInpcrdFile(f'{base}/{pid}/{pid}_equil.rst7')
     system = prmtop.createSystem(nonbondedMethod=app.CutoffPeriodic, nonbondedCutoff=0.9 * unit.nanometer,
