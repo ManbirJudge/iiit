@@ -1,8 +1,0 @@
-AI was used for -
-- Understanding theory.
-- Undertanding initial file structure.
-- Basic shell commands and scripts.
-- Verifying the results.
-- LaTex for report.
-
-The code, structure and other things weren't done using AI.
